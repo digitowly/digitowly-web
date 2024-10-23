@@ -3,12 +3,12 @@ import Logo from "../Logo/Logo.astro";
 ---
 
 <nav
-  class="triangle fixed z-50 flex h-screen w-[220px] flex-col bg-white px-7 py-10"
+  class="triangle fixed bottom-0 z-50 flex w-full bg-white px-7 py-10 md:top-0 md:h-full md:w-[220px] md:flex-col"
 >
   <Logo />
   <div class="pt-14"></div>
-  <div class="flex h-full flex-col justify-between">
-    <ul>
+  <div class="flex h-full justify-between sm:flex-col">
+    <ul class="flex">
       <li>about</li>
       <li>contact</li>
     </ul>

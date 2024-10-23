@@ -1,0 +1,56 @@
+---
+import TitleGradient from "./TitleGradient.astro";
+---
+
+<div>
+  <div class="relative z-50">
+    <p class="text-[4rem] font-bold leading-none text-white">love for</p>
+    <p class="slide-in-left text-green text-[7.5rem] font-bold leading-none">
+      digital
+    </p>
+    <p
+      class="slide-in-right text-[7.5rem] font-bold leading-none text-white md:pl-[30%]"
+    >
+      places
+    </p>
+  </div>
+  <div class="absolute top-0 z-10">
+    <TitleGradient />
+  </div>
+</div>
+
+<style>
+  .slide-in-left {
+    transform: translateX(0);
+    opacity: 1;
+    animation: slideLeft 1s;
+  }
+
+  .slide-in-right {
+    transform: translateX(0);
+    opacity: 1;
+    animation: slideRight 1s;
+  }
+
+  @keyframes slideLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-200px);
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideRight {
+    0% {
+      opacity: 0;
+      transform: translateX(200px);
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>

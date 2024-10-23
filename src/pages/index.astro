@@ -1,55 +1,19 @@
 ---
+import GetInTouchButton from "../components/Buttons/GetInTouchButton.astro";
+import MainTitle from "../components/MainTitle/MainTitle.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="digitowly">
   <main>
-    <p class="text-[4rem] font-bold leading-none text-white">love for</p>
-    <p
-      class="slide-in-left text-[7.5rem] font-bold leading-none text-green-400"
+    <MainTitle />
+    <div
+      class="relative z-40 mt-14 flex w-full flex-col items-center justify-center"
     >
-      digital
-    </p>
-    <p
-      class="slide-in-right pl-[282px] text-[7.5rem] font-bold leading-none text-white"
-    >
-      places
-    </p>
+      <p class="relative z-40 pb-5 text-white">
+        sustainable app and web experiences with modern technologies
+      </p>
+      <GetInTouchButton />
+    </div>
   </main>
 </Layout>
-
-<style>
-  .slide-in-left {
-    transform: translateX(0);
-    opacity: 1;
-    animation: slideLeft 1s;
-  }
-
-  .slide-in-right {
-    transform: translateX(0);
-    opacity: 1;
-    animation: slideRight 1s;
-  }
-
-  @keyframes slideLeft {
-    0% {
-      opacity: 0;
-      transform: translateX(-200px);
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideRight {
-    0% {
-      opacity: 0;
-      transform: translateX(200px);
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-</style>
