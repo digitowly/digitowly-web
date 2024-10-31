@@ -14,14 +14,14 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <Navigation />
   <body>
-    <div class="w-full pr-[5%] pt-12 md:pl-[30%] md:pr-[10%] lg:pr-[15%]">
+    <Navigation />
+    <div class="w-full p-7 pt-12 md:px-[25%]">
       <slot />
     </div>
   </body>
@@ -34,6 +34,4 @@ const { title } = Astro.props;
       background: #0d101f;
     }
   </style>
-
-
 </html>

@@ -4,17 +4,23 @@ import TitleGradient from "./TitleGradient.astro";
 
 <div>
   <div class="relative z-50">
-    <p class="text-[4rem] font-bold leading-none text-white">love for</p>
-    <p class="slide-in-left text-green text-[7.5rem] font-bold leading-none">
-      digital
+    <p class="text-[2rem] font-bold leading-none text-white md:text-[4rem]">
+      love for
     </p>
-    <p
-      class="slide-in-right text-[7.5rem] font-bold leading-none text-white md:pl-[30%]"
-    >
-      places
-    </p>
+    <div class="flex">
+      <h1
+        class="slide-in-left text-[5rem] font-bold leading-none text-green md:text-[7.5rem]"
+      >
+        digital
+      </h1>
+      <h1
+        class="slide-in-right text-[5rem] font-bold leading-none text-white md:text-[7.5rem]"
+      >
+        places
+      </h1>
+    </div>
   </div>
-  <div class="absolute top-0 z-10">
+  <div class="absolute top-0 z-10 hidden md:block">
     <TitleGradient />
   </div>
 </div>

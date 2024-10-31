@@ -3,23 +3,14 @@ import Logo from "../Logo/Logo.astro";
 ---
 
 <nav
-  class="triangle fixed bottom-0 z-50 flex w-full bg-white px-7 py-10 md:top-0 md:h-full md:w-[220px] md:flex-col"
+  class="bg-dark fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between p-5 text-white"
 >
-  <Logo />
-  <div class="pt-14"></div>
-  <div class="flex h-full justify-between sm:flex-col">
-    <ul class="flex flex-col">
-      <li>about</li>
-      <li>contact</li>
-    </ul>
-    <ul>
-      <li>impressum</li>
-    </ul>
-  </div>
+  <span class="w-52">
+    <Logo />
+  </span>
+  <ul class="flex font-bold">
+    <li>about</li>
+    <span class="pl-5"></span>
+    <li>contact</li>
+  </ul>
 </nav>
-
-<style>
-  .triangle {
-    clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 80% 100%);
-  }
-</style>
