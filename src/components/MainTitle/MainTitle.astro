@@ -1,13 +1,19 @@
 ---
+import Heart from "./Heart.astro";
 import TitleGradient from "./TitleGradient.astro";
 ---
 
 <div>
-  <div class="relative z-50">
-    <p class="text-[2rem] font-bold leading-none text-white md:text-[4rem]">
-      love for
-    </p>
-    <div class="flex">
+  <div class="relative z-50 flex w-full flex-col items-center justify-center">
+    <span class="flex items-center pb-5">
+      <Heart />
+      <p
+        class="pl-3 text-[2rem] font-bold leading-none text-white md:text-[4rem]"
+      >
+        for
+      </p>
+    </span>
+    <span class="flex flex-col sm:flex-row">
       <h1
         class="slide-in-left text-[5rem] font-bold leading-none text-green md:text-[7.5rem]"
       >
@@ -18,7 +24,7 @@ import TitleGradient from "./TitleGradient.astro";
       >
         places
       </h1>
-    </div>
+    </span>
   </div>
   <div class="absolute top-0 z-10 hidden md:block">
     <TitleGradient />
