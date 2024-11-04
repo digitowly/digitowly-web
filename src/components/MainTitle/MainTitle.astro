@@ -4,29 +4,31 @@ import TitleGradient from "./TitleGradient.astro";
 ---
 
 <div>
-  <div class="relative z-50 flex w-full flex-col items-center justify-center">
-    <span class="flex items-center pb-5">
-      <Heart />
+  <div class="relative z-20 flex w-full flex-col items-center justify-center">
+    <span class="flex items-center pb-2 md:pb-5">
+      <span class="origin-right scale-75 md:scale-90 lg:scale-100">
+        <Heart />
+      </span>
       <p
-        class="pl-3 text-[2rem] font-bold leading-none text-white md:text-[4rem]"
+        class="pl-3 text-[2rem] font-bold leading-none text-white md:text-[3rem] lg:text-[4rem]"
       >
         for
       </p>
     </span>
     <span class="flex flex-col sm:flex-row">
       <h1
-        class="slide-in-left text-[5rem] font-bold leading-none text-green md:text-[7.5rem]"
+        class="slide-in-left text-[5rem] font-bold leading-none text-green md:text-[6rem] lg:text-[7.5rem]"
       >
         digital
       </h1>
       <h1
-        class="slide-in-right text-[5rem] font-bold leading-none text-white md:text-[7.5rem]"
+        class="slide-in-right text-[5rem] font-bold leading-none text-white md:text-[6rem] lg:text-[7.5rem]"
       >
         places
       </h1>
     </span>
   </div>
-  <div class="absolute top-0 z-10 hidden md:block">
+  <div class="absolute top-0 z-10 hidden scale-50 md:flex 2xl:scale-100">
     <TitleGradient />
   </div>
 </div>
