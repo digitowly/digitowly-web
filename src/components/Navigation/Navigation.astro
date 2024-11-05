@@ -3,14 +3,18 @@ import Logo from "../Logo/Logo.astro";
 ---
 
 <nav
-  class="bg-dark fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between px-5 text-white md:px-12 lg:px-24"
+  class="fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between bg-dark px-5 text-white md:px-12 lg:px-24"
 >
   <a aria-label="link to the start of the website" href="/">
     <Logo />
   </a>
   <ul class="flex font-bold">
-    <li>about</li>
+    <li>
+      <a href="/about">about</a>
+    </li>
     <span class="pl-5"></span>
-    <li>contact</li>
+    <li>
+      <a href="/contact">contact</a>
+    </li>
   </ul>
 </nav>
