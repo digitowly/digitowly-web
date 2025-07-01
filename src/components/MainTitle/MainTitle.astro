@@ -3,8 +3,11 @@ import Heart from "./Heart.astro";
 import TitleGradient from "./TitleGradient.astro";
 ---
 
-<div>
-  <div class="relative z-20 flex w-full flex-col items-center justify-center">
+<div id="main-title-container">
+  <div
+    class="relative z-20 flex w-full flex-col items-center justify-center transition-transform duration-300 ease-out"
+    id="main-title-content"
+  >
     <span class="flex items-center pb-2 md:pb-5">
       <span class="origin-right scale-75 md:scale-90 lg:scale-100">
         <Heart />
@@ -68,3 +71,28 @@ import TitleGradient from "./TitleGradient.astro";
     }
   }
 </style>
+
+<script>
+  function handleScroll() {
+    const container = document.getElementById("main-title-content");
+    if (!container) return;
+
+    const scrollY = window.scrollY;
+    const maxScroll = 300;
+    const minScale = 0.5;
+    const maxScale = 1.0;
+
+    // Calculate scale based on scroll position
+    const scrollProgress = Math.min(scrollY / maxScroll, 1);
+    const scale = maxScale - scrollProgress * (maxScale - minScale);
+
+    // Apply the scale transform
+    container.style.transform = `scale(${scale})`;
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", handleScroll);
+
+  // Initial call to set correct scale
+  handleScroll();
+</script>

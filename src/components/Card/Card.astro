@@ -3,26 +3,23 @@ import AppIcon from "./Icons/AppIcon.astro";
 import WebIcon from "./Icons/WebIcon.astro";
 
 interface Props {
-  title: string;
   body: string;
   icon: "web" | "app";
 }
 
-const { title, body, icon } = Astro.props;
+const { body, icon } = Astro.props;
 ---
 
-<div class="relative flex w-full items-center justify-center">
-  <span class="absolute -top-[150px] z-10">
+<div
+  class="relative flex w-full flex-col items-center justify-center rounded-md border border-white/10 md:flex-col"
+  style="background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.05) 25%, rgba(34, 197, 94, 0.06) 50%, rgba(168, 85, 247, 0.04) 75%, transparent 100%);"
+>
+  <span>
     {icon == "web" && <WebIcon />}
     {icon == "app" && <AppIcon />}
   </span>
-  <div
-    class="bg-dark border-iceblue relative z-30 h-full w-full max-w-md rounded-lg border-2 p-5 text-white"
-  >
-    <h2 class="pb-5 text-center text-xl font-bold">
-      {title}
-    </h2>
-    <p>
+  <div class="relative z-30 h-full w-full max-w-sm rounded-lg p-5 text-white">
+    <p class="leading-relaxed">
       {body}
     </p>
   </div>

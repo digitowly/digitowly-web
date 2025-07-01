@@ -1,36 +1,45 @@
 ---
 import GetInTouchButton from "../components/Buttons/GetInTouchButton.astro";
 import Card from "../components/Card/Card.astro";
+import Footer from "../components/Footer/Footer.astro";
 import MainTitle from "../components/MainTitle/MainTitle.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="digitowly">
-  <main>
-    <MainTitle />
-    <div
-      class="relative z-40 mt-20 flex w-full flex-col items-center justify-center"
-    >
-      <p class="relative z-40 pb-8 text-center text-white">
-        sustainable app and web experiences with modern technologies
-      </p>
-      <GetInTouchButton />
-      <div class="mt-[200px]"></div>
-      <section
-        class="relative z-40 flex w-full flex-col justify-between md:flex-row"
+  <main class="flex min-h-screen flex-col">
+    <div class="flex-1">
+      <MainTitle />
+      <div
+        class="relative z-40 mt-10 flex w-full flex-col items-center justify-center"
       >
-        <Card
-          icon="web"
-          title="Websites"
-          body="This is just some placeholder.. This is just some placeholder..This is just some placeholder..This is just some placeholder..This is just some placeholder..This is just some placeholder..This is just some placeholder..This is just some placeholder.. This is just some placeholder..This is just some placeholder.."
-        />
-        <span class="mb-[180px] pl-10"></span>
-        <Card
-          icon="app"
-          title="Websites"
-          body="This is just some placeholder.."
-        />
-      </section>
+        <p class="relative z-40 pb-12 text-center text-xl text-white">
+          built with care, proven tech and user focus
+        </p>
+        <!-- <GetInTouchButton /> -->
+        <div class="mt-[50px]"></div>
+
+        <section class="relative z-40 flex w-full flex-col items-center pt-14">
+          <h2
+            class="mb-8 text-center text-3xl font-extrabold leading-relaxed text-white"
+          >
+            We build and value
+          </h2>
+          <div
+            class="flex w-full flex-col justify-between gap-8 md:flex-row md:gap-12"
+          >
+            <Card
+              icon="web"
+              body="Fast, responsive and accessible websites optimized for phones, tablets, and desktops."
+            />
+            <Card
+              icon="app"
+              body="native mobile apps and PWAs that are a joy to use - smooth, clean, and run smoothly everywhere."
+            />
+          </div>
+        </section>
+      </div>
     </div>
+    <Footer />
   </main>
 </Layout>
