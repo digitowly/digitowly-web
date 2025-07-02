@@ -18,7 +18,9 @@ const { body, icon } = Astro.props;
     {icon == "web" && <WebIcon />}
     {icon == "app" && <AppIcon />}
   </span>
-  <div class="relative z-30 h-full w-full max-w-sm rounded-lg p-5 text-white">
+  <div
+    class="relative z-30 h-full w-full max-w-sm rounded-lg p-5 pb-8 text-white"
+  >
     <p class="leading-relaxed">
       {body}
     </p>

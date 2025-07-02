@@ -3,7 +3,9 @@ import Logo from "../Logo/Logo.astro";
 ---
 
 <nav
-  class="fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between bg-dark/90 px-5 text-white backdrop-blur-md sm:px-12 xl:px-[15%] 2xl:px-[25%]"
+  class="fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between px-5 text-white backdrop-blur-md transition-all duration-300 sm:px-12 md:px-[10%] xl:px-[15%] 2xl:px-[25%]"
+  id="navigation"
+  style="background-color: rgba(13, 16, 31, 0.3); border-bottom: 1px solid transparent;"
 >
   <a aria-label="link to the start of the website" href="/">
     <Logo />
@@ -15,3 +17,26 @@ import Logo from "../Logo/Logo.astro";
     <span class="pl-5"></span>
   </ul>
 </nav>
+
+<script>
+  function handleScroll() {
+    const nav = document.getElementById("navigation");
+    if (!nav) return;
+
+    const scrollY = window.scrollY;
+
+    if (scrollY > 0) {
+      nav.style.backgroundColor = "rgba(13, 16, 31, 0.7)";
+      nav.style.borderBottomColor = "rgba(249, 249, 249, 0.1)";
+    } else {
+      nav.style.backgroundColor = "rgba(13, 16, 31, 0.3)";
+      nav.style.borderBottomColor = "transparent";
+    }
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", handleScroll);
+
+  // Initial call to set correct state
+  handleScroll();
+</script>
