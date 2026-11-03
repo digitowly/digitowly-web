@@ -1,0 +1,130 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PolicySection from "../../components/Privacy/PolicySection.astro";
+
+const lastUpdated = "November 2026";
+---
+
+<Layout
+  title="Rhymate privacy — digitowly"
+  description="How Rhymate handles your data. No accounts, no analytics, no ads. Your lyrics stay on your devices."
+  tone="mint"
+>
+  <section class="gutter relative overflow-hidden bg-mint pt-36 pb-16 text-pine sm:pt-44 sm:pb-24">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -top-[25vw] -right-[30vw] size-[70vw] rounded-full bg-[#91ffe2]/70 blur-3xl"
+    ></div>
+    <p class="rise relative text-sm font-medium tracking-[0.2em] text-teal uppercase">
+      <a href="/rhymate" class="hover:underline">Rhymate</a> · Privacy
+    </p>
+    <h1
+      class="display rise relative mt-6 text-huge text-balance"
+      style="animation-delay: 120ms"
+    >
+      Your lyrics{" "}
+      <span class="serif-accent tracking-normal text-teal">stay yours.</span>
+    </h1>
+    <p
+      class="rise relative mt-10 max-w-xl text-lg leading-relaxed text-pine/80"
+      style="animation-delay: 260ms"
+    >
+      No accounts, no analytics, no ads. We don’t run a server that collects
+      anything from the app. Here’s the little that does happen with data.
+    </p>
+  </section>
+
+  <section class="gutter bg-paper py-20 sm:py-32">
+    <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <h2 class="display text-big">The details</h2>
+      <p class="serif-accent text-xl text-ink/60">
+        Last updated {lastUpdated}.
+      </p>
+    </div>
+
+    <PolicySection no="01" title="Who is responsible">
+      <p>
+        Rhymate is made by <strong>digitowly</strong> · Robert Pasdziernik,
+        Düsseldorfer Straße 159, 51063 Köln, Germany,{" "}
+        <a href="mailto:info@digitowly.com">info@digitowly.com</a>. More details
+        are in the <a href="/impressum">Impressum</a>.
+      </p>
+    </PolicySection>
+
+    <PolicySection no="02" title="Your songs & favourites">
+      <p>
+        Your lyrics, chords and favourites are stored on your device. If you use
+        iCloud, they sync through your private iCloud database at Apple. We
+        can’t see that data, and neither can anyone else except you (and Apple,
+        under their{" "}
+        <a
+          href="https://www.apple.com/legal/privacy/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          privacy policy
+        </a>
+        ).
+      </p>
+    </PolicySection>
+
+    <PolicySection no="03" title="Rhymes & definitions">
+      <ul>
+        <li>
+          <strong>Rhyme and synonym searches.</strong> When you look up a word,
+          that word is sent to the{" "}
+          <a
+            href="https://www.datamuse.com/api/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Datamuse API
+          </a>{" "}
+          to find matches. Only the word is sent, never your lyrics.
+        </li>
+        <li>
+          <strong>Definitions.</strong> When you open a word’s definition, that
+          word is sent to{" "}
+          <a
+            href="https://en.wiktionary.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Wiktionary
+          </a>
+          , run by the Wikimedia Foundation (
+          <a
+            href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            privacy policy
+          </a>
+          ).
+        </li>
+      </ul>
+      <p>
+        As with any internet request, these services receive your IP address
+        technically. Both are based in the USA. The legal basis is Art. 6(1)(b)
+        GDPR: without sending the word, we can’t find rhymes for it. (We tried
+        guessing. Results were poor.)
+      </p>
+    </PolicySection>
+
+    <PolicySection no="04" title="Your rights">
+      <p>
+        Your rights under the GDPR, and who to complain to, are listed on our{" "}
+        <a href="/privacy">main privacy page</a>. Since we don’t hold any of
+        your Rhymate data, deleting the app (and its iCloud data) deletes
+        everything.
+      </p>
+    </PolicySection>
+
+    <PolicySection no="05" title="Changes">
+      <p>
+        If a new Rhymate feature changes how data is handled, we’ll update this
+        page first.
+      </p>
+    </PolicySection>
+  </section>
+</Layout>
