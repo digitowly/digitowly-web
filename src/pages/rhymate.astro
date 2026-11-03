@@ -282,22 +282,47 @@ const gallery = [
   </section>
 
   <!-- Closing -->
-  <section class="gutter bg-sand py-24 sm:py-32">
+  <section id="support" class="gutter scroll-mt-20 bg-sand py-24 sm:py-32">
     <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
       <h2 class="display text-huge">
         Made by <span class="serif-accent tracking-normal">digitowly</span>.
       </h2>
       <p class="max-w-sm text-lg leading-relaxed text-ink/75">
         Found a bug? Missing something? Figured out what rhymes with orange?
-        Write to{" "}
-        <a
-          href="mailto:info@digitowly.com"
-          class="font-medium text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
-        >
-          info@digitowly.com
-        </a>
-        .
+        We’d love to hear from you.
       </p>
     </div>
+    <ul class="mt-14 grid gap-4 sm:grid-cols-2">
+      {[
+        {
+          href: "mailto:info@digitowly.com?subject=Rhymate%20support",
+          label: "Email support",
+          note: "info@digitowly.com",
+        },
+        {
+          href: "/rhymate/privacy",
+          label: "Privacy",
+          note: "Short read. Your lyrics stay yours.",
+        },
+      ].map(({ href, label, note }) => (
+        <li>
+          <a
+            href={href}
+            class="group flex h-full items-center justify-between gap-6 rounded-[1.5rem] bg-paper/70 px-6 py-6 transition-colors duration-500 hover:bg-paper sm:px-8"
+          >
+            <span>
+              <span class="display block text-2xl sm:text-3xl">{label}</span>
+              <span class="mt-1 block break-words text-ink/65">{note}</span>
+            </span>
+            <span
+              aria-hidden="true"
+              class="text-2xl transition-transform duration-500 ease-calm group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 </Layout>
