@@ -2,9 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import RhymateIcon from "../components/Rhymate/RhymateIcon.astro";
 import PhoneFrame from "../components/Rhymate/PhoneFrame.astro";
-import search from "../assets/rhymate/search.png";
 import editor from "../assets/rhymate/editor.png";
-import projects from "../assets/rhymate/projects.png";
+import rhymeRail from "../assets/rhymate/rhyme-rail.png";
+import rhymes from "../assets/rhymate/rhymes.png";
+import rhymeDetail from "../assets/rhymate/rhyme-detail.png";
+import chordEdit from "../assets/rhymate/chord-edit.png";
+import songs from "../assets/rhymate/songs.png";
 
 /** Set once the app is live, e.g. "https://apps.apple.com/app/id…". */
 const APP_STORE_URL = "";
@@ -14,7 +17,7 @@ const platforms = ["iPhone", "iPad", "Mac"];
 const features = [
   {
     title: "Rhymes & synonyms",
-    body: "Type a word, get rhymes, synonyms and related words. Faster than staring at the ceiling, and nearly as relaxing.",
+    body: "Look up rhymes, synonyms and related words, or let them pop up above the keyboard while you write. Faster than staring at the ceiling.",
   },
   {
     title: "Lyrics with chords",
@@ -43,17 +46,46 @@ const features = [
 /** Each line is a list of [chord, text] segments. */
 const sheet: [string, string][][] = [
   [
-    ["Am", "Drops falling on my "],
-    ["F", "windowpane"],
+    ["G", "Wind in my "],
+    ["D", "hair and sun on my face"],
   ],
   [
-    ["C", "Every rhyme I try to "],
-    ["G", "find"],
+    ["Em", "Nothing ahead "],
+    ["C", "but infinite space"],
   ],
-  [
-    ["Am", "Echoes back through the "],
-    ["F", "haze"],
-  ],
+];
+
+const gallery = [
+  {
+    src: editor,
+    caption: "Lyrics, with chords on top.",
+    alt: "Rhymate's editor showing the song Open Road with chords above the lyrics",
+  },
+  {
+    src: rhymeRail,
+    caption: "Rhymes while you type.",
+    alt: "Rhyme suggestions for the word night shown above the keyboard while writing",
+  },
+  {
+    src: rhymes,
+    caption: "100 rhymes for “love”. Most of them are even words.",
+    alt: "Rhymate search results for love, grouped by syllables",
+  },
+  {
+    src: rhymeDetail,
+    caption: "Save it, copy it, look it up.",
+    alt: "Detail sheet for the rhyme light with save and copy buttons and a Wiktionary definition",
+  },
+  {
+    src: chordEdit,
+    caption: "Pick a chord, see the shape.",
+    alt: "Chord editor showing a D major chord diagram and chord flavours",
+  },
+  {
+    src: songs,
+    caption: "Your songs, sorted. Your life, sadly, not.",
+    alt: "List of songs in the project Desert Sessions grouped by date",
+  },
 ];
 ---
 
@@ -129,14 +161,14 @@ const sheet: [string, string][][] = [
         style="animation-delay: 300ms"
       >
         <PhoneFrame
-          src={search}
-          alt="Rhymate search results listing rhymes for the word love"
+          src={rhymes}
+          alt="Rhymate search results for love, grouped by syllables"
           loading="eager"
           class="relative z-10 -mr-10 w-[46%] -rotate-[5deg] sm:-mr-14"
         />
         <PhoneFrame
           src={editor}
-          alt="Rhymate's lyric editor showing a song titled Summer Rain"
+          alt="Rhymate's editor showing the song Open Road with chords above the lyrics"
           loading="eager"
           class="relative z-20 mb-10 w-[50%]"
         />
@@ -182,6 +214,30 @@ const sheet: [string, string][][] = [
     </ol>
   </section>
 
+  <!-- Gallery -->
+  <section class="bg-mint py-24 text-pine sm:py-32">
+    <div class="gutter flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <h2 class="display text-big">
+        A look <span class="serif-accent tracking-normal">inside.</span>
+      </h2>
+      <p class="text-pine/70 sm:text-right">
+        Swipe or scroll sideways. It’s fine, we won’t tell anyone.
+      </p>
+    </div>
+    <ul
+      class="gutter mt-12 flex snap-x snap-mandatory scroll-px-5 gap-6 sm:scroll-px-10 lg:scroll-px-16 overflow-x-auto pb-6 [scrollbar-width:thin] sm:gap-10"
+      aria-label="Rhymate screenshots"
+      tabindex="0"
+    >
+      {gallery.map(({ src, caption, alt }) => (
+        <li class="w-[68vw] max-w-[18rem] shrink-0 snap-start sm:w-64">
+          <PhoneFrame src={src} alt={alt} />
+          <p class="serif-accent mt-6 text-2xl leading-snug">{caption}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   <!-- Chord sheet -->
   <section class="gutter bg-pine py-24 text-mint sm:py-36">
     <div class="grid items-center gap-16 lg:grid-cols-[1.6fr_1fr]">
@@ -215,8 +271,8 @@ const sheet: [string, string][][] = [
       </div>
       <div class="flex justify-center lg:justify-end">
         <PhoneFrame
-          src={projects}
-          alt="Rhymate's project overview listing two projects"
+          src={chordEdit}
+          alt="Chord editor showing a D major chord diagram and chord flavours"
           class="w-56 rotate-[3deg] sm:w-72"
         />
       </div>
