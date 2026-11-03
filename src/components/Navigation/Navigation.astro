@@ -2,13 +2,14 @@
 import Logo from "../Logo/Logo.astro";
 
 interface Props {
-  tone: "paper" | "mint";
+  tone: "paper" | "mint" | "forest";
 }
 
 const { tone } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, "");
 
 const links = [
+  { href: "/skauz", label: "Skauz" },
   { href: "/rhymate", label: "Rhymate" },
   { href: "/#contact", label: "Contact" },
 ];
@@ -17,7 +18,7 @@ const links = [
 <header
   id="site-nav"
   data-tone={tone}
-  class="gutter fixed inset-x-0 top-0 z-50 flex h-20 items-center justify-between text-ink transition-[background-color,box-shadow] duration-500 data-[scrolled]:shadow-[0_1px_0_rgb(22_26_29/0.08)] data-[tone=mint]:bg-mint/0 data-[tone=paper]:bg-paper/0 data-[scrolled]:data-[tone=mint]:bg-mint/85 data-[scrolled]:data-[tone=paper]:bg-paper/85 data-[scrolled]:backdrop-blur-lg"
+  class="gutter fixed inset-x-0 top-0 z-50 flex h-20 items-center justify-between text-ink transition-[background-color,box-shadow] duration-500 data-[scrolled]:shadow-[0_1px_0_rgb(22_26_29/0.08)] data-[tone=forest]:text-cream data-[tone=mint]:bg-mint/0 data-[tone=paper]:bg-paper/0 data-[tone=forest]:bg-forest/0 data-[scrolled]:data-[tone=mint]:bg-mint/85 data-[scrolled]:data-[tone=paper]:bg-paper/85 data-[scrolled]:data-[tone=forest]:bg-forest/85 data-[scrolled]:backdrop-blur-lg"
 >
   <a href="/" aria-label="digitowly home">
     <Logo />

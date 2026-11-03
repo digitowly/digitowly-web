@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import RhymateIcon from "../components/Rhymate/RhymateIcon.astro";
 import PhoneFrame from "../components/Rhymate/PhoneFrame.astro";
 import editor from "../assets/rhymate/editor.png";
+import { Image } from "astro:assets";
+import Topo from "../components/Skauz/Topo.astro";
+import owl from "../assets/skauz/owl.png";
 
 const services = [
   {
@@ -75,35 +78,60 @@ const values = [
     </div>
   </section>
 
-  <!-- What we build -->
-  <section class="gutter bg-sage py-24 sm:py-36">
-    <p class="mb-10 text-sm font-medium tracking-[0.2em] text-moss uppercase">
-      We build &amp; value
-    </p>
-    <ul class="grid gap-16 md:grid-cols-2 md:gap-10">
-      {services.map(({ no, title, body }) => (
-        <li class="border-t border-moss/25 pt-6">
-          <span class="serif-accent text-2xl text-moss">{no}</span>
-          <h2 class="display mt-4 text-huge text-moss">{title}</h2>
-          <p class="mt-6 max-w-sm text-lg leading-relaxed text-moss/80">
-            {body}
-          </p>
-        </li>
-      ))}
-    </ul>
+  <!-- Skauz: main project -->
+  <section class="relative overflow-hidden bg-forest text-cream">
+    <Topo class="pointer-events-none absolute -right-[40%] -bottom-[15%] w-[140%] text-canopy sm:-right-[25%] sm:w-[90%] lg:-top-[10%] lg:-right-[10%] lg:bottom-auto lg:w-[60%]" />
+    <div class="gutter relative grid items-center gap-14 py-24 sm:py-36 lg:grid-cols-[1.4fr_1fr]">
+      <div>
+        <p class="inline-flex items-center gap-3 rounded-full border border-amber/40 px-4 py-2 text-sm font-medium text-amber">
+          <span class="size-2 rounded-full bg-amber"></span>
+          Our main project · work in progress
+        </p>
+        <h2 class="display mt-10 text-giant">Skauz</h2>
+        <p class="serif-accent mt-4 text-big text-amber">
+          for everyone who stops to look.
+        </p>
+        <p class="mt-8 max-w-lg text-lg leading-relaxed text-cream/80">
+          A map of the wildlife around you. Find out what’s been spotted nearby,
+          look up species and log your own sightings. Private by default,
+          because some owls prefer not to be famous.
+        </p>
+        <a
+          href="/skauz"
+          class="group mt-10 inline-flex items-center gap-3 rounded-full bg-amber px-7 py-4 font-medium text-forest transition-colors duration-500 hover:bg-cream"
+        >
+          Meet Skauz
+          <span
+            aria-hidden="true"
+            class="transition-transform duration-500 ease-calm group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </a>
+      </div>
+      <div class="flex justify-center lg:justify-end">
+        <Image
+          src={owl}
+          alt="The Skauz owl: a forest-green owl with amber eyes in front of pine trees"
+          widths={[240, 400, 640]}
+          sizes="(min-width: 1024px) 24rem, 60vw"
+          class="w-56 drop-shadow-[0_30px_40px_rgb(0_0_0/0.35)] sm:w-72 lg:w-96"
+        />
+      </div>
+    </div>
   </section>
 
   <!-- Rhymate teaser -->
   <section class="bg-mint text-pine">
-    <div class="gutter grid items-center gap-16 py-24 sm:py-32 lg:grid-cols-[1.2fr_1fr]">
+    <div class="gutter grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-[1.4fr_1fr]">
       <div>
         <div class="flex items-center gap-4">
-          <RhymateIcon size={64} class="rounded-[22%] shadow-sm" />
+          <RhymateIcon size={56} class="rounded-[22%] shadow-sm" />
           <p class="text-sm font-medium tracking-[0.2em] uppercase">
-            Our own app
+            Also ours
           </p>
         </div>
-        <h2 class="display mt-10 text-huge">
+        <h2 class="display mt-8 text-big">
           Rhymate
           <span class="serif-accent block text-[0.55em] tracking-normal">
             for when the second verse won’t come.
@@ -130,10 +158,28 @@ const values = [
         <PhoneFrame
           src={editor}
           alt="Rhymate's editor showing the song Open Road with chords above the lyrics"
-          class="w-60 rotate-[3deg] sm:w-72 lg:mr-8"
+          class="w-48 rotate-[3deg] sm:w-56 lg:mr-8"
         />
       </div>
     </div>
+  </section>
+
+  <!-- What we build -->
+  <section class="gutter bg-sage py-24 sm:py-36">
+    <p class="mb-10 text-sm font-medium tracking-[0.2em] text-moss uppercase">
+      We build &amp; value
+    </p>
+    <ul class="grid gap-16 md:grid-cols-2 md:gap-10">
+      {services.map(({ no, title, body }) => (
+        <li class="border-t border-moss/25 pt-6">
+          <span class="serif-accent text-2xl text-moss">{no}</span>
+          <h2 class="display mt-4 text-huge text-moss">{title}</h2>
+          <p class="mt-6 max-w-sm text-lg leading-relaxed text-moss/80">
+            {body}
+          </p>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <!-- Values -->

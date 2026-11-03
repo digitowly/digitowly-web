@@ -11,7 +11,7 @@ interface Props {
   title: string;
   description?: string;
   /** Tailwind background class of the first section, so the nav blends in. */
-  tone?: "paper" | "mint";
+  tone?: "paper" | "mint" | "forest";
 }
 
 const {
@@ -29,7 +29,7 @@ const {
     <meta name="description" content={description} />
     <meta
       name="theme-color"
-      content={tone === "mint" ? "#c4f2dd" : "#f3efe6"}
+      content={{ paper: "#f3efe6", mint: "#c4f2dd", forest: "#10241e" }[tone]}
     />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
