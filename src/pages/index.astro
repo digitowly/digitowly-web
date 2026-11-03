@@ -21,6 +21,11 @@ const values = [
   { word: "Care", note: "Every detail considered, nothing rushed." },
   { word: "Proven tech", note: "Solid foundations that last." },
   { word: "User focus", note: "Built for the people who use it." },
+  {
+    word: "Privacy",
+    note: "No trackers. We don’t even know you’re here.",
+    href: "/privacy",
+  },
 ];
 ---
 
@@ -136,9 +141,24 @@ const values = [
   <section class="gutter bg-sand py-24 sm:py-36">
     <h2 class="sr-only">What we value</h2>
     <ul class="flex flex-col">
-      {values.map(({ word, note }) => (
+      {values.map(({ word, note, href }) => (
         <li class="flex flex-col gap-3 border-t border-ink/15 py-8 sm:flex-row sm:items-baseline sm:justify-between">
-          <span class="display text-big">{word}</span>
+          {href ? (
+            <a
+              href={href}
+              class="group display inline-flex items-baseline gap-3 text-big"
+            >
+              {word}
+              <span
+                aria-hidden="true"
+                class="text-[0.5em] transition-transform duration-500 ease-calm group-hover:translate-x-1.5"
+              >
+                →
+              </span>
+            </a>
+          ) : (
+            <span class="display text-big">{word}</span>
+          )}
           <span class="serif-accent text-2xl text-ink/70 sm:text-3xl">
             {note}
           </span>

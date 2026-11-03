@@ -1,0 +1,284 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PolicySection from "../components/Privacy/PolicySection.astro";
+
+const lastUpdated = "November 2026";
+
+const shortVersion = [
+  {
+    claim: "No cookies.",
+    aside: "Not even the edible kind. We checked the whole site twice.",
+  },
+  {
+    claim: "No tracking.",
+    aside:
+      "Which also means we have no idea whether anyone reads this. Hi, if you do.",
+  },
+  {
+    claim: "No ads.",
+    aside: "Nobody is bidding on your attention here.",
+  },
+  {
+    claim: "No accounts.",
+    aside: "Neither here nor in Rhymate. One less password to forget.",
+  },
+];
+---
+
+<Layout
+  title="Privacy — digitowly"
+  description="How digitowly and Rhymate handle your data. Short version: as little as possible."
+>
+  <!-- Hero -->
+  <section class="gutter relative overflow-hidden bg-paper pt-36 pb-16 sm:pt-44 sm:pb-24">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -top-[25vw] -left-[30vw] size-[80vw] rounded-full bg-mist/70 blur-3xl"
+    ></div>
+    <p class="rise relative text-sm font-medium tracking-[0.2em] text-moss uppercase">
+      Privacy
+    </p>
+    <h1
+      class="display rise relative mt-6 text-huge text-balance"
+      style="animation-delay: 120ms"
+    >
+      Your data is{" "}
+      <span class="serif-accent tracking-normal text-moss">yours.</span>
+      We’d like to keep it that way.
+    </h1>
+    <p
+      class="rise relative mt-10 max-w-xl text-lg leading-relaxed text-ink/75"
+      style="animation-delay: 260ms"
+    >
+      What happens to your data when you visit this website or use Rhymate. The
+      short version fits on a postcard. The long version exists because the law
+      likes paragraphs.
+    </p>
+  </section>
+
+  <!-- Short version -->
+  <section class="gutter bg-sage py-20 text-moss sm:py-32">
+    <h2 class="text-sm font-medium tracking-[0.2em] uppercase">
+      The short version
+    </h2>
+    <ul class="mt-10">
+      {shortVersion.map(({ claim, aside }) => (
+        <li class="flex flex-col gap-2 border-t border-moss/25 py-7 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
+          <span class="display text-big">{claim}</span>
+          <span class="serif-accent max-w-md text-xl leading-snug text-moss/80 sm:text-right sm:text-2xl">
+            {aside}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Why -->
+  <section class="gutter bg-sand py-20 sm:py-32">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+      <h2 class="display text-big text-balance">
+        Privacy is part of{" "}
+        <span class="serif-accent tracking-normal">good UX</span>. Not a
+        checkbox next to it.
+      </h2>
+      <div class="max-w-xl space-y-5 text-lg leading-relaxed text-ink/80">
+        <p>
+          We think software should feel calm. That's hard to pull off while it's
+          quietly reporting your every tap to a dozen companies in the
+          background. Cookie banners, trackers and “we value your privacy”
+          pop-ups are a bad experience on their own, before you even get to the
+          data part.
+        </p>
+        <p>
+          So we skip all of it. It's honestly less work for us, and we promise
+          the laziness is principled.
+        </p>
+        <p>
+          When something does need your data, like looking up a rhyme, we send
+          only what the job requires and say so below.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Long version -->
+  <section class="gutter bg-paper py-20 sm:py-32">
+    <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <h2 class="display text-big">The long version</h2>
+      <p class="serif-accent text-xl text-ink/60">
+        The part with the paragraphs. Last updated {lastUpdated}.
+      </p>
+    </div>
+
+    <PolicySection no="01" title="Who is responsible">
+      <p>
+        The controller responsible for data processing on this website and in
+        Rhymate within the meaning of the GDPR is:
+      </p>
+      <p>
+        <strong>digitowly</strong> · Robert Pasdziernik
+        <br />
+        Düsseldorfer Straße 159, 51063 Köln, Germany
+        <br />
+        <a href="mailto:info@digitowly.com">info@digitowly.com</a>
+      </p>
+      <p>
+        More details are in the <a href="/impressum">Impressum</a>. If you have
+        any questions about privacy, just write. A real human will answer.
+      </p>
+    </PolicySection>
+
+    <PolicySection no="02" title="Visiting this website">
+      <p>
+        This website is hosted by <strong>Netlify, Inc.</strong> (San Francisco,
+        USA). Like any web server, theirs needs some technical information to
+        deliver a page to you. When you visit, the following is processed
+        automatically and may be stored in server log files for a short time:
+      </p>
+      <ul>
+        <li>your IP address</li>
+        <li>date and time of the request</li>
+        <li>the page requested and the referring page</li>
+        <li>browser type, version and operating system</li>
+      </ul>
+      <p>
+        This data is used solely to deliver the website and keep it secure and
+        stable. It is not combined with other data and not used to build
+        profiles. The legal basis is Art. 6(1)(f) GDPR, our legitimate interest
+        in running a working, secure website. Netlify may process this data in
+        the USA. More information is in{" "}
+        <a
+          href="https://www.netlify.com/privacy/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Netlify's privacy policy
+        </a>
+        .
+      </p>
+    </PolicySection>
+
+    <PolicySection no="03" title="Cookies, analytics & fonts">
+      <p>
+        This website does <strong>not</strong> use cookies, analytics, tracking
+        pixels, social media plugins or advertising. There is nothing to consent
+        to, which is why you didn't have to dismiss a banner to read this.
+      </p>
+      <p>
+        All fonts are hosted on our own server. Your browser doesn't contact
+        Google Fonts or any other third-party service when it loads this site.
+      </p>
+    </PolicySection>
+
+    <PolicySection no="04" title="Contacting us">
+      <p>
+        If you send us an email, we use your address and whatever you write to
+        answer you and, if needed, follow up. The legal basis is Art. 6(1)(b)
+        GDPR if your message is about a project or contract, otherwise Art.
+        6(1)(f) GDPR, our legitimate interest in replying to you.
+      </p>
+      <p>
+        We delete the conversation once it's done, unless legal retention
+        periods (for example for invoices) require us to keep it longer.
+      </p>
+    </PolicySection>
+
+    <PolicySection no="05" title="Rhymate">
+      <p>
+        Rhymate has no accounts, no analytics and no ads. We don't run a server
+        that collects anything from the app. Here is what it does with data:
+      </p>
+      <ul>
+        <li>
+          <strong>Your lyrics and favourites</strong> are stored on your device.
+          If you use iCloud, they sync through your private iCloud database at
+          Apple. We can't see that data, and neither can anyone else except you
+          (and Apple, under their{" "}
+          <a
+            href="https://www.apple.com/legal/privacy/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            privacy policy
+          </a>
+          ).
+        </li>
+        <li>
+          <strong>Rhyme and synonym searches.</strong> When you look up a word,
+          that word is sent to the{" "}
+          <a
+            href="https://www.datamuse.com/api/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Datamuse API
+          </a>{" "}
+          to find matches. Only the word is sent, never your lyrics.
+        </li>
+        <li>
+          <strong>Definitions.</strong> When you open a word's definition, that
+          word is sent to{" "}
+          <a
+            href="https://en.wiktionary.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Wiktionary
+          </a>
+          , run by the Wikimedia Foundation (
+          <a
+            href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            privacy policy
+          </a>
+          ).
+        </li>
+      </ul>
+      <p>
+        As with any internet request, these services receive your IP address
+        technically. Both are based in the USA. The legal basis is Art. 6(1)(b)
+        GDPR: without sending the word, we can't find rhymes for it. (We tried
+        guessing. Results were poor.)
+      </p>
+    </PolicySection>
+
+    <PolicySection no="06" title="Your rights">
+      <p>Under the GDPR, you have the right to:</p>
+      <ul>
+        <li>access the personal data we hold about you (Art. 15)</li>
+        <li>have it corrected (Art. 16) or deleted (Art. 17)</li>
+        <li>restrict its processing (Art. 18)</li>
+        <li>receive it in a portable format (Art. 20)</li>
+        <li>object to processing based on legitimate interest (Art. 21)</li>
+      </ul>
+      <p>
+        To use any of these, email{" "}
+        <a href="mailto:info@digitowly.com">info@digitowly.com</a>. Given how
+        little we store, it'll be a short email.
+      </p>
+      <p>
+        You can also lodge a complaint with a data protection supervisory
+        authority. For us, that is the Landesbeauftragte für Datenschutz und
+        Informationsfreiheit Nordrhein-Westfalen (
+        <a
+          href="https://www.ldi.nrw.de/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ldi.nrw.de
+        </a>
+        ).
+      </p>
+    </PolicySection>
+
+    <PolicySection no="07" title="Changes">
+      <p>
+        If we change how we handle data, for example when Rhymate gets a new
+        feature, we'll update this page. The “last updated” date above tells you
+        when that last happened.
+      </p>
+    </PolicySection>
+  </section>
+</Layout>
