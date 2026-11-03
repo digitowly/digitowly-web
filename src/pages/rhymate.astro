@@ -1,9 +1,191 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import RhymateIcon from "../components/Rhymate/RhymateIcon.astro";
+import PhoneFrame from "../components/Rhymate/PhoneFrame.astro";
+import search from "../assets/rhymate/search.png";
+import editor from "../assets/rhymate/editor.png";
+import projects from "../assets/rhymate/projects.png";
+
+/** Set once the app is live, e.g. "https://apps.apple.com/app/id…". */
+const APP_STORE_URL = "";
+
+const platforms = ["iPhone", "iPad", "Mac"];
+
+const features = [
+  {
+    title: "Rhymes in an instant",
+    body: "Type a word and get rhymes, synonyms and related words the moment you need them.",
+  },
+  {
+    title: "Lyrics, organised",
+    body: "Keep every song in its own project and group them into collections that make sense to you.",
+  },
+  {
+    title: "Favourites at hand",
+    body: "Save the rhymes you love and find them again whenever the next verse needs them.",
+  },
+  {
+    title: "Words, explained",
+    body: "Look up detailed Wiktionary definitions and word information without leaving your draft.",
+  },
+  {
+    title: "Everywhere you write",
+    body: "Your lyrics stay in sync across iPhone, iPad and Mac.",
+  },
+];
+
+const lyric = [
+  "Drops falling on my windowpane",
+  "Every rhyme I try to find",
+  "Echoes back through the haze",
+];
 ---
 
-<Layout title="digitowly - contact">
-  <main>
-    <p class="text-white">Rhymate!!</p>
-  </main>
+<Layout
+  title="Rhymate — a quiet writing companion for songwriters"
+  description="Rhymate helps songwriters and lyricists find rhymes, synonyms and definitions, and keep their lyrics organised across iPhone, iPad and Mac."
+  tone="mint"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-mint text-pine">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -bottom-[30vw] -left-[20vw] size-[70vw] rounded-full bg-[#91ffe2]/70 blur-3xl"
+    ></div>
+    <div class="gutter relative grid min-h-svh items-end gap-16 pt-32 pb-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+      <div>
+        <RhymateIcon
+          size={112}
+          class="rise rounded-[22%] shadow-[0_20px_40px_-20px_rgb(18_58_49/0.5)]"
+        />
+        <h1
+          class="display rise mt-10 text-giant"
+          style="animation-delay: 120ms"
+        >
+          Rhymate
+        </h1>
+        <p
+          class="serif-accent rise mt-4 text-big text-teal"
+          style="animation-delay: 240ms"
+        >
+          find the word, keep the flow.
+        </p>
+        <p
+          class="rise mt-8 max-w-md text-lg leading-relaxed text-pine/80"
+          style="animation-delay: 360ms"
+        >
+          A quiet writing companion for songwriters and lyricists. Organise your
+          lyrics, find rhymes and synonyms, and stay in the moment.
+        </p>
+        <div
+          class="rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-5"
+          style="animation-delay: 480ms"
+        >
+          {APP_STORE_URL ? (
+            <a
+              href={APP_STORE_URL}
+              class="group inline-flex items-center gap-3 rounded-full bg-pine px-7 py-4 font-medium text-mint transition-colors duration-500 hover:bg-teal"
+            >
+              Download on the App Store
+              <span
+                aria-hidden="true"
+                class="transition-transform duration-500 ease-calm group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+          ) : (
+            <span class="inline-flex items-center rounded-full border border-pine/25 px-6 py-3 font-medium">
+              Coming soon to the App Store
+            </span>
+          )}
+          <ul class="flex gap-5 text-sm font-medium text-pine/70">
+            {platforms.map((p) => (
+              <li>{p}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="rise relative mx-auto flex w-full max-w-md items-end justify-center lg:max-w-none"
+        style="animation-delay: 300ms"
+      >
+        <PhoneFrame
+          src={search}
+          alt="Rhymate search results listing rhymes for the word love"
+          loading="eager"
+          class="relative z-10 -mr-10 w-[46%] -rotate-[5deg] sm:-mr-14"
+        />
+        <PhoneFrame
+          src={editor}
+          alt="Rhymate's lyric editor showing a song titled Summer Rain"
+          loading="eager"
+          class="relative z-20 mb-10 w-[50%]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="gutter bg-paper py-24 sm:py-36">
+    <p class="mb-10 text-sm font-medium tracking-[0.2em] text-teal uppercase">
+      What it does
+    </p>
+    <h2 class="display max-w-5xl text-huge">
+      Everything you need to write,{" "}
+      <span class="serif-accent tracking-normal text-teal">
+        nothing you don’t.
+      </span>
+    </h2>
+    <ol class="mt-20 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map(({ title, body }, i) => (
+        <li class="border-t border-ink/15 pt-6">
+          <span class="serif-accent text-2xl text-teal">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <h3 class="display mt-3 text-3xl sm:text-4xl">{title}</h3>
+          <p class="mt-4 max-w-sm leading-relaxed text-ink/70">{body}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Lyric moment -->
+  <section class="gutter bg-pine py-28 text-mint sm:py-40">
+    <div class="grid items-center gap-16 lg:grid-cols-[1.6fr_1fr]">
+      <blockquote class="serif-accent text-[clamp(2rem,4vw,3.75rem)] leading-[1.15] text-balance">
+        {lyric.map((line) => (
+          <p>{line}</p>
+        ))}
+      </blockquote>
+      <div class="flex justify-center lg:justify-end">
+        <PhoneFrame
+          src={projects}
+          alt="Rhymate's project overview listing two projects"
+          class="w-60 rotate-[3deg] sm:w-72"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="gutter bg-sand py-24 sm:py-32">
+    <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+      <h2 class="display text-huge">
+        Made by <span class="serif-accent tracking-normal">digitowly</span>.
+      </h2>
+      <p class="max-w-sm text-lg leading-relaxed text-ink/75">
+        Questions, ideas or feedback about Rhymate? We’d love to hear from you
+        at{" "}
+        <a
+          href="mailto:info@digitowly.com"
+          class="font-medium text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
+        >
+          info@digitowly.com
+        </a>
+        .
+      </p>
+    </div>
+  </section>
 </Layout>

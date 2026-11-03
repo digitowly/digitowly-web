@@ -1,41 +1,48 @@
 ---
-import "@fontsource-variable/montserrat";
+import "@fontsource-variable/bricolage-grotesque/standard.css";
+import "@fontsource-variable/inter";
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+import "../styles/global.css";
 import Navigation from "../components/Navigation/Navigation.astro";
 import Footer from "../components/Footer/Footer.astro";
 
 interface Props {
   title: string;
+  description?: string;
+  /** Tailwind background class of the first section, so the nav blends in. */
+  tone?: "paper" | "mint";
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "digitowly is a small independent studio from Cologne building calm, fast and accessible websites and apps.",
+  tone = "paper",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta
+      name="theme-color"
+      content={tone === "mint" ? "#c4f2dd" : "#f3efe6"}
+    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
-    <Navigation />
-    <div
-      class="w-full px-5 pt-[130px] sm:px-12 md:px-[10%] xl:px-[15%] 2xl:px-[25%]"
-    >
+  <body class="flex min-h-svh flex-col">
+    <Navigation tone={tone} />
+    <main class="flex-1">
       <slot />
-    </div>
+    </main>
     <Footer />
   </body>
-
-  <style is:global>
-    html {
-      font-family:
-        Montserrat Variable,
-        sans-serif;
-      background: #0d101f;
-    }
-  </style>
 </html>
