@@ -121,47 +121,56 @@ const values = [
     </div>
   </section>
 
-  <!-- Rhymate teaser -->
-  <section class="bg-mint text-pine">
-    <div class="gutter grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-[1.4fr_1fr]">
-      <div>
-        <div class="flex items-center gap-4">
-          <RhymateIcon size={56} class="rounded-[22%] shadow-sm" />
-          <p class="text-sm font-medium tracking-[0.2em] uppercase">
-            Also ours
-          </p>
-        </div>
-        <h2 class="display mt-8 text-big">
-          Rhymate
-          <span class="serif-accent block text-[0.55em] tracking-normal">
-            for when the second verse won’t come.
-          </span>
-        </h2>
-        <p class="mt-8 max-w-lg text-lg leading-relaxed text-pine/80">
-          A songwriting app for lyrics, chords and finding a rhyme at 2am. On
-          iPhone, iPad and Mac.
-        </p>
+  <!-- Other projects -->
+  <section id="projects" class="gutter scroll-mt-20 bg-paper py-24 sm:py-32">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <h2 class="display text-big">
+        Other projects{" "}
+        <span class="serif-accent tracking-normal text-moss">
+          a.k.a. the side quests.
+        </span>
+      </h2>
+      <p class="text-ink/60 sm:text-right">
+        Smaller things we built because we wanted them to exist.
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-6">
+      <li>
         <a
           href="/rhymate"
-          class="group mt-10 inline-flex items-center gap-3 rounded-full bg-pine px-7 py-4 font-medium text-mint transition-colors duration-500 hover:bg-teal"
+          class="group grid overflow-hidden rounded-[2rem] bg-mint text-pine transition-colors duration-500 hover:bg-[#b5edd4] md:grid-cols-[1.4fr_1fr]"
         >
-          Discover Rhymate
-          <span
-            aria-hidden="true"
-            class="transition-transform duration-500 ease-calm group-hover:translate-x-1"
-          >
-            →
-          </span>
+          <div class="p-7 sm:p-10 lg:p-14">
+            <RhymateIcon size={56} class="rounded-[22%] shadow-sm" />
+            <h3 class="display mt-8 text-4xl sm:text-5xl">Rhymate</h3>
+            <p class="serif-accent mt-2 text-2xl text-teal sm:text-3xl">
+              for when the second verse won’t come.
+            </p>
+            <p class="mt-6 max-w-md leading-relaxed text-pine/80">
+              A songwriting app for lyrics, chords and finding a rhyme at 2am.
+              On iPhone, iPad and Mac.
+            </p>
+            <span class="mt-8 inline-flex items-center gap-2 font-medium">
+              Take a look
+              <span
+                aria-hidden="true"
+                class="transition-transform duration-500 ease-calm group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </span>
+          </div>
+          <div class="relative h-64 overflow-hidden sm:h-80 md:h-auto">
+            <PhoneFrame
+              src={editor}
+              alt="Rhymate's editor showing the song Open Road with chords above the lyrics"
+              class="absolute top-8 left-1/2 w-52 -translate-x-1/2 rotate-[4deg] transition-transform duration-700 ease-calm group-hover:-translate-y-2 sm:w-60 md:top-14"
+            />
+          </div>
         </a>
-      </div>
-      <div class="flex justify-center lg:justify-end">
-        <PhoneFrame
-          src={editor}
-          alt="Rhymate's editor showing the song Open Road with chords above the lyrics"
-          class="w-48 rotate-[3deg] sm:w-56 lg:mr-8"
-        />
-      </div>
-    </div>
+      </li>
+    </ul>
   </section>
 
   <!-- What we build -->
