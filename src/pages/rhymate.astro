@@ -1,9 +1,328 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import RhymateIcon from "../components/Rhymate/RhymateIcon.astro";
+import PhoneFrame from "../components/Rhymate/PhoneFrame.astro";
+import editor from "../assets/rhymate/editor.png";
+import rhymeRail from "../assets/rhymate/rhyme-rail.png";
+import rhymes from "../assets/rhymate/rhymes.png";
+import rhymeDetail from "../assets/rhymate/rhyme-detail.png";
+import chordEdit from "../assets/rhymate/chord-edit.png";
+import songs from "../assets/rhymate/songs.png";
+
+/** Set to "" to show "Coming soon" instead. */
+const APP_STORE_URL = "https://apps.apple.com/us/app/rhymate/id6608984180";
+
+const platforms = ["iPhone", "iPad", "Mac"];
+
+const features = [
+  {
+    title: "Rhymes & synonyms",
+    body: "Look up rhymes, synonyms and related words, or let them pop up above the keyboard while you write. Faster than staring at the ceiling.",
+  },
+  {
+    title: "Lyrics with chords",
+    body: "Write in a proper editor and drop chords right above the words they belong to. Forgot the shape? Tap the chord.",
+  },
+  {
+    title: "Share the song",
+    body: "Send a song as a chord sheet or copy just the lyrics. Your bassist will still ask for the chords again.",
+  },
+  {
+    title: "Songs, sorted",
+    body: "Every song gets a home inside a project. The note called “new song FINAL final 2” can finally retire.",
+  },
+  {
+    title: "Favourites & meanings",
+    body: "Save the rhymes you love, and check a word on Wiktionary before you build a chorus around it.",
+  },
+  {
+    title: "Yours, everywhere",
+    body: "Syncs through your own iCloud across iPhone, iPad and Mac. No accounts, no analytics, no ads.",
+    href: "/rhymate/privacy",
+    link: "How Rhymate handles data",
+  },
+];
+
+/** Each line is a list of [chord, text] segments. */
+const sheet: [string, string][][] = [
+  [
+    ["G", "Wind in my "],
+    ["D", "hair and sun on my face"],
+  ],
+  [
+    ["Em", "Nothing ahead "],
+    ["C", "but infinite space"],
+  ],
+];
+
+const gallery = [
+  {
+    src: editor,
+    caption: "Lyrics, with chords on top.",
+    alt: "Rhymate's editor showing the song Open Road with chords above the lyrics",
+  },
+  {
+    src: rhymeRail,
+    caption: "Rhymes while you type.",
+    alt: "Rhyme suggestions for the word night shown above the keyboard while writing",
+  },
+  {
+    src: rhymes,
+    caption: "100 rhymes for “love”. Most of them are even words.",
+    alt: "Rhymate search results for love, grouped by syllables",
+  },
+  {
+    src: rhymeDetail,
+    caption: "Save it, copy it, look it up.",
+    alt: "Detail sheet for the rhyme light with save and copy buttons and a Wiktionary definition",
+  },
+  {
+    src: chordEdit,
+    caption: "Pick a chord, see the shape.",
+    alt: "Chord editor showing a D major chord diagram and chord flavours",
+  },
+  {
+    src: songs,
+    caption: "Your songs, sorted. Your life, sadly, not.",
+    alt: "List of songs in the project Desert Sessions grouped by date",
+  },
+];
 ---
 
-<Layout title="digitowly - contact">
-  <main>
-    <p class="text-white">Rhymate!!</p>
-  </main>
+<Layout
+  title="Rhymate — lyrics, chords and rhymes"
+  description="Rhymate is a songwriting app for lyrics, chords and finding the right rhyme, on iPhone, iPad and Mac."
+  tone="mint"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-mint text-pine">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -bottom-[30vw] -left-[20vw] size-[70vw] rounded-full bg-[#91ffe2]/70 blur-3xl"
+    ></div>
+    <div class="gutter relative grid min-h-svh items-end gap-16 pt-32 pb-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+      <div>
+        <RhymateIcon
+          size={112}
+          class="rise rounded-[22%] shadow-[0_20px_40px_-20px_rgb(18_58_49/0.5)]"
+        />
+        <h1
+          class="display rise mt-10 text-giant"
+          style="animation-delay: 120ms"
+        >
+          Rhymate
+        </h1>
+        <p
+          class="serif-accent rise mt-4 text-big text-teal"
+          style="animation-delay: 240ms"
+        >
+          for when the second verse won’t come.
+        </p>
+        <p
+          class="rise mt-8 max-w-md text-lg leading-relaxed text-pine/80"
+          style="animation-delay: 360ms"
+        >
+          A songwriting app for lyrics, chords and the eternal search for
+          something that rhymes with “orange”. We can’t fix orange. Nobody can.
+          But most other words are covered.
+        </p>
+        <div
+          class="rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-5"
+          style="animation-delay: 480ms"
+        >
+          {APP_STORE_URL ? (
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-3 rounded-full bg-pine px-7 py-4 font-medium text-mint transition-colors duration-500 hover:bg-teal"
+            >
+              Download on the App Store
+              <span
+                aria-hidden="true"
+                class="transition-transform duration-500 ease-calm group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+          ) : (
+            <span class="inline-flex items-center rounded-full border border-pine/25 px-6 py-3 font-medium">
+              Coming soon to the App Store
+            </span>
+          )}
+          <ul class="flex gap-5 text-sm font-medium text-pine/70">
+            {platforms.map((p) => (
+              <li>{p}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="rise relative mx-auto flex w-full max-w-md items-end justify-center lg:max-w-none"
+        style="animation-delay: 300ms"
+      >
+        <PhoneFrame
+          src={rhymes}
+          alt="Rhymate search results for love, grouped by syllables"
+          loading="eager"
+          class="relative z-10 -mr-10 w-[46%] -rotate-[5deg] sm:-mr-14"
+        />
+        <PhoneFrame
+          src={editor}
+          alt="Rhymate's editor showing the song Open Road with chords above the lyrics"
+          loading="eager"
+          class="relative z-20 mb-10 w-[50%]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="gutter bg-paper py-24 sm:py-36">
+    <p class="mb-10 text-sm font-medium tracking-[0.2em] text-teal uppercase">
+      What it does
+    </p>
+    <h2 class="display max-w-5xl text-huge">
+      A handful of tools.{" "}
+      <span class="serif-accent tracking-normal text-teal">
+        All of them actually useful.
+      </span>
+    </h2>
+    <ol class="mt-20 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map(({ title, body, href, link }, i) => (
+        <li class="border-t border-ink/15 pt-6">
+          <span class="serif-accent text-2xl text-teal">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <h3 class="display mt-3 text-3xl sm:text-4xl">{title}</h3>
+          <p class="mt-4 max-w-sm leading-relaxed text-ink/70">{body}</p>
+          {href && (
+            <a
+              href={href}
+              class="group mt-4 inline-flex items-center gap-2 font-medium text-teal"
+            >
+              {link}
+              <span
+                aria-hidden="true"
+                class="transition-transform duration-500 ease-calm group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+          )}
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Gallery -->
+  <section class="bg-mint py-24 text-pine sm:py-32">
+    <div class="gutter flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <h2 class="display text-big">
+        A look <span class="serif-accent tracking-normal">inside.</span>
+      </h2>
+      <p class="text-pine/70 sm:text-right">
+        Swipe or scroll sideways. It’s fine, we won’t tell anyone.
+      </p>
+    </div>
+    <ul
+      class="gutter mt-12 flex snap-x snap-mandatory scroll-px-5 gap-6 sm:scroll-px-10 lg:scroll-px-16 overflow-x-auto pb-6 [scrollbar-width:thin] sm:gap-10"
+      aria-label="Rhymate screenshots"
+      tabindex="0"
+    >
+      {gallery.map(({ src, caption, alt }) => (
+        <li class="w-[68vw] max-w-[18rem] shrink-0 snap-start sm:w-64">
+          <PhoneFrame src={src} alt={alt} />
+          <p class="serif-accent mt-6 text-2xl leading-snug">{caption}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Chord sheet -->
+  <section class="gutter bg-pine py-24 text-mint sm:py-36">
+    <div class="grid items-center gap-16 lg:grid-cols-[1.6fr_1fr]">
+      <div>
+        <p class="text-sm font-medium tracking-[0.2em] text-mint/70 uppercase">
+          Lyrics &amp; chords
+        </p>
+        <figure class="mt-10">
+          <div
+            class="serif-accent space-y-6 text-[clamp(1.85rem,4vw,3.75rem)] leading-none sm:space-y-8"
+            aria-label="Song lyrics with chords"
+          >
+            {sheet.map((line) => (
+              <p class="flex flex-wrap">
+                {line.map(([chord, text]) => (
+                  <span class="inline-flex flex-col whitespace-pre">
+                    <span class="mb-2 font-sans text-[max(0.4em,0.85rem)] font-semibold tracking-normal text-[#91ffe2] not-italic">
+                      {chord}
+                    </span>
+                    {text}
+                  </span>
+                ))}
+              </p>
+            ))}
+          </div>
+          <figcaption class="mt-12 max-w-md text-lg leading-relaxed text-mint/75">
+            Chords sit right above the word they belong to and move with it when
+            you edit. No more counting spaces in a notes app.
+          </figcaption>
+        </figure>
+      </div>
+      <div class="flex justify-center lg:justify-end">
+        <PhoneFrame
+          src={chordEdit}
+          alt="Chord editor showing a D major chord diagram and chord flavours"
+          class="w-56 rotate-[3deg] sm:w-72"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section id="support" class="gutter scroll-mt-20 bg-sand py-24 sm:py-32">
+    <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+      <h2 class="display text-huge">
+        Made by <span class="serif-accent tracking-normal">digitowly</span>.
+      </h2>
+      <p class="max-w-sm text-lg leading-relaxed text-ink/75">
+        Found a bug? Missing something? Figured out what rhymes with orange?
+        We’d love to hear from you.
+      </p>
+    </div>
+    <ul class="mt-14 grid gap-4 sm:grid-cols-2">
+      {[
+        {
+          href: "mailto:info@digitowly.com?subject=Rhymate%20support",
+          label: "Email support",
+          note: "info@digitowly.com",
+        },
+        {
+          href: "/rhymate/privacy",
+          label: "Privacy",
+          note: "Short read. Your lyrics stay yours.",
+        },
+      ].map(({ href, label, note }) => (
+        <li>
+          <a
+            href={href}
+            class="group flex h-full items-center justify-between gap-6 rounded-[1.5rem] bg-paper/70 px-6 py-6 transition-colors duration-500 hover:bg-paper sm:px-8"
+          >
+            <span>
+              <span class="display block text-2xl sm:text-3xl">{label}</span>
+              <span class="mt-1 block break-words text-ink/65">{note}</span>
+            </span>
+            <span
+              aria-hidden="true"
+              class="text-2xl transition-transform duration-500 ease-calm group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
 </Layout>

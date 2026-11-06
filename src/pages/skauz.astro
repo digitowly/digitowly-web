@@ -1,0 +1,210 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Topo from "../components/Skauz/Topo.astro";
+import owl from "../assets/skauz/owl.png";
+
+/** Set to "" to hide the link. */
+const EARLY_BUILD_URL = "https://skauz.com";
+
+const features = [
+  {
+    title: "Scout the map",
+    body: "Zoom into any area and see which species have been observed there. Zoom out too far and it politely asks you to zoom back in.",
+  },
+  {
+    title: "Search species",
+    body: "Type “tawny owl”, or just “duck”, and find out what lives where.",
+  },
+  {
+    title: "Log your sightings",
+    body: "Record what you saw, where, and how sure you are. Every sighting has a story, even the blurry ones.",
+  },
+  {
+    title: "Saved searches",
+    body: "Keep the species you’re on the lookout for one tap away.",
+  },
+  {
+    title: "Private by default",
+    body: "Your sightings stay yours until you decide to share them. Locations are verified before anything goes public.",
+  },
+  {
+    title: "Built on open data",
+    body: "Observations come from GBIF, the Global Biodiversity Information Facility. In other words: a whole planet of very patient people with binoculars.",
+  },
+];
+
+const steps = [
+  { label: "Draft", note: "You log a sighting. Only you can see it." },
+  {
+    label: "Verification",
+    note: "The species name and location get checked.",
+  },
+  { label: "Verified", note: "Ready to share, but still private." },
+  { label: "Public", note: "Only if you say so. Never automatically." },
+];
+---
+
+<Layout
+  title="Skauz — discover the wildlife around you"
+  description="Skauz is a work-in-progress web app for discovering wildlife near you, looking up species and logging your own sightings, privately by default."
+  tone="forest"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-forest text-cream">
+    <Topo class="pointer-events-none absolute -right-[35%] -bottom-[12%] w-[140%] text-canopy sm:-right-[20%] sm:w-[90%] lg:top-1/2 lg:-right-[8%] lg:bottom-auto lg:w-[62%] lg:-translate-y-1/2" />
+    <div class="gutter relative grid min-h-svh items-end gap-12 pt-32 pb-16 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+      <div>
+        <p class="rise inline-flex items-center gap-3 rounded-full border border-amber/40 px-4 py-2 text-sm font-medium text-amber">
+          <span class="relative flex size-2">
+            <span class="absolute inline-flex size-full animate-ping rounded-full bg-amber/70 motion-reduce:animate-none"></span>
+            <span class="relative inline-flex size-2 rounded-full bg-amber"></span>
+          </span>
+          Work in progress · our main project
+        </p>
+        <h1 class="display rise mt-8 text-giant" style="animation-delay: 120ms">
+          Skauz
+        </h1>
+        <p
+          class="serif-accent rise mt-4 text-big text-amber"
+          style="animation-delay: 240ms"
+        >
+          for everyone who stops to look.
+        </p>
+        <p
+          class="rise mt-8 max-w-lg text-lg leading-relaxed text-cream/80"
+          style="animation-delay: 360ms"
+        >
+          A map of the wildlife around you. See what’s been spotted nearby, look
+          up species, and log your own sightings, from the duck at the pond to
+          the owl you’re fairly sure you heard last night.
+        </p>
+        {EARLY_BUILD_URL && (
+          <div
+            class="rise mt-10 flex flex-col items-start gap-3"
+            style="animation-delay: 480ms"
+          >
+            <a
+              href={EARLY_BUILD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-3 rounded-full bg-amber px-7 py-4 font-medium text-forest transition-colors duration-500 hover:bg-cream"
+            >
+              Peek at the early build
+              <span
+                aria-hidden="true"
+                class="transition-transform duration-500 ease-calm group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+            <p class="text-sm text-cream/60">
+              Expect paint that’s still drying.
+            </p>
+          </div>
+        )}
+      </div>
+      <div class="rise flex justify-center" style="animation-delay: 300ms">
+        <Image
+          src={owl}
+          alt="The Skauz owl: a forest-green owl with amber eyes in front of pine trees"
+          widths={[240, 400, 640]}
+          sizes="(min-width: 1024px) 26rem, 60vw"
+          loading="eager"
+          class="w-56 drop-shadow-[0_30px_40px_rgb(0_0_0/0.35)] sm:w-72 lg:w-[26rem]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest status -->
+  <section class="gutter bg-bark py-16 text-forest sm:py-20">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+      <h2 class="display text-big text-balance">
+        Early days.{" "}
+        <span class="serif-accent tracking-normal">Rough edges included.</span>
+      </h2>
+      <p class="max-w-md text-lg leading-relaxed">
+        Skauz is in active development. Some features are missing, some will
+        change, and the occasional bug may appear. The software kind, mostly.
+      </p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="gutter bg-cream py-24 text-forest sm:py-36">
+    <p class="mb-10 text-sm font-medium tracking-[0.2em] uppercase opacity-70">
+      What it does (so far)
+    </p>
+    <h2 class="display max-w-5xl text-huge">
+      Go outside.{" "}
+      <span class="serif-accent tracking-normal text-canopy">Look closer.</span>
+    </h2>
+    <ol class="mt-20 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map(({ title, body }, i) => (
+        <li class="border-t border-forest/20 pt-6">
+          <span class="serif-accent text-2xl text-canopy">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <h3 class="display mt-3 text-3xl sm:text-4xl">{title}</h3>
+          <p class="mt-4 max-w-sm leading-relaxed text-forest/75">{body}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Privacy flow -->
+  <section class="gutter bg-forest py-24 text-cream sm:py-36">
+    <div class="grid gap-14 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+      <div>
+        <p class="text-sm font-medium tracking-[0.2em] text-amber uppercase">
+          Privacy
+        </p>
+        <h2 class="display mt-8 text-huge">
+          Private{" "}
+          <span class="serif-accent tracking-normal text-amber">
+            until you say so.
+          </span>
+        </h2>
+        <p class="mt-8 max-w-md text-lg leading-relaxed text-cream/75">
+          A rare owl’s nest doesn’t need an audience. That’s why nothing you log
+          is public by default, and verification never changes that. Sharing is
+          always your call.
+        </p>
+      </div>
+      <ol class="self-end">
+        {steps.map(({ label, note }, i) => (
+          <li class="grid grid-cols-[3rem_1fr] items-baseline gap-4 border-t border-cream/15 py-6 sm:grid-cols-[4rem_1fr]">
+            <span class="serif-accent text-2xl text-amber">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+              <span class="display text-3xl sm:text-4xl">{label}</span>
+              <span class="text-cream/70 sm:text-right">{note}</span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="gutter bg-sand py-24 sm:py-32">
+    <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+      <h2 class="display text-huge text-balance">
+        Want to <span class="serif-accent tracking-normal">tag along?</span>
+      </h2>
+      <p class="max-w-sm text-lg leading-relaxed text-ink/75">
+        Ideas, feedback, or a strong opinion about owls? We’d love to hear it.
+        Write to{" "}
+        <a
+          href="mailto:info@digitowly.com"
+          class="font-medium text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink"
+        >
+          info@digitowly.com
+        </a>
+        .
+      </p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  /* calm, large colour fields */
+  --color-paper: #f3efe6;
+  --color-ink: #161a1d;
+  --color-sage: #c9d5c1;
+  --color-moss: #2c4639;
+  --color-mist: #d3e0e4;
+  --color-sand: #e9dcc5;
+  --color-dusk: #1d2733;
+  --color-owl: #37dd6e;
+
+  /* skauz */
+  --color-forest: #10241e;
+  --color-canopy: #009b77;
+  --color-amber: #ffa800;
+  --color-bark: #ba8c52;
+  --color-cream: #f2dca0;
+
+  /* rhymate */
+  --color-mint: #c4f2dd;
+  --color-teal: #0d7d6a;
+  --color-pine: #123a31;
+
+  --font-display:
+    "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --text-giant: clamp(4.25rem, 19vw, 14rem);
+  --text-giant--line-height: 0.86;
+  --text-huge: clamp(3rem, 9vw, 8rem);
+  --text-huge--line-height: 0.92;
+  --text-big: clamp(2.25rem, 5vw, 4.5rem);
+  --text-big--line-height: 1;
+
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    @apply bg-paper font-sans text-ink antialiased;
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-owl/40 text-ink;
+  }
+
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-4 outline-current;
+  }
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 88;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+@utility serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+@utility gutter {
+  @apply px-5 sm:px-10 lg:px-16 2xl:px-24;
+}
+
+@utility rise {
+  animation: rise 1.2s var(--ease-calm) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise {
+    animation: none;
+  }
+}
