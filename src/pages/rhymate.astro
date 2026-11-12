@@ -7,7 +7,10 @@ import rhymeRail from "../assets/rhymate/rhyme-rail.png";
 import rhymes from "../assets/rhymate/rhymes.png";
 import rhymeDetail from "../assets/rhymate/rhyme-detail.png";
 import chordEdit from "../assets/rhymate/chord-edit.png";
-import songs from "../assets/rhymate/songs.png";
+import songsHome from "../assets/rhymate/songs-home.png";
+import { releases } from "../components/Rhymate/changelog";
+
+const latest = releases[0];
 
 /** Set to "" to show "Coming soon" instead. */
 const APP_STORE_URL = "https://apps.apple.com/us/app/rhymate/id6608984180";
@@ -16,24 +19,24 @@ const platforms = ["iPhone", "iPad", "Mac"];
 
 const features = [
   {
-    title: "Rhymes & synonyms",
-    body: "Look up rhymes, synonyms and related words, or let them pop up above the keyboard while you write. Faster than staring at the ceiling.",
-  },
-  {
     title: "Lyrics with chords",
-    body: "Write in a proper editor and drop chords right above the words they belong to. Forgot the shape? Tap the chord.",
+    body: "Write in a proper editor and drop chords right above the words they belong to. Tap a chord to transpose it or pick the shape you actually play.",
   },
   {
-    title: "Share the song",
-    body: "Send a song as a chord sheet or copy just the lyrics. Your bassist will still ask for the chords again.",
+    title: "Right where you left off",
+    body: "Rhymate opens on the song you were writing, with your recent songs from every folder. The note called “new song FINAL final 2” can finally retire.",
   },
   {
-    title: "Songs, sorted",
-    body: "Every song gets a home inside a project. The note called “new song FINAL final 2” can finally retire.",
+    title: "Rhymes while you write",
+    body: "Put the cursor on a word and rhymes appear above the keyboard. Faster than staring at the ceiling.",
   },
   {
-    title: "Favourites & meanings",
-    body: "Save the rhymes you love, and check a word on Wiktionary before you build a chorus around it.",
+    title: "Print the chord sheet",
+    body: "Export a clean PDF with chords, with chord diagrams or as lyrics only. Your bassist will still ask for the chords again.",
+  },
+  {
+    title: "Rhymes & meanings",
+    body: "Search any word for rhymes grouped by syllables, check it on Wiktionary and save the keepers. Orange still has none. We checked.",
   },
   {
     title: "Yours, everywhere",
@@ -50,12 +53,17 @@ const sheet: [string, string][][] = [
     ["D", "hair and sun on my face"],
   ],
   [
-    ["Em", "Nothing ahead "],
-    ["C", "but infinite space"],
+    ["Em", "Phone at two percent, "],
+    ["C", "lost in space"],
   ],
 ];
 
 const gallery = [
+  {
+    src: songsHome,
+    caption: "Right where you left off.",
+    alt: "Rhymate's Songs home with the song Open Road to continue, a New Song button and recent songs",
+  },
   {
     src: editor,
     caption: "Lyrics, with chords on top.",
@@ -67,31 +75,26 @@ const gallery = [
     alt: "Rhyme suggestions for the word night shown above the keyboard while writing",
   },
   {
+    src: chordEdit,
+    caption: "Pick a chord, see the shape.",
+    alt: "Chord editor showing a D major chord diagram and chord flavours",
+  },
+  {
     src: rhymes,
-    caption: "100 rhymes for “love”. Most of them are even words.",
-    alt: "Rhymate search results for love, grouped by syllables",
+    caption: "Rhymes for “dream”. Most of them are even words.",
+    alt: "Rhymate search results for dream, grouped by syllables",
   },
   {
     src: rhymeDetail,
     caption: "Save it, copy it, look it up.",
     alt: "Detail sheet for the rhyme light with save and copy buttons and a Wiktionary definition",
   },
-  {
-    src: chordEdit,
-    caption: "Pick a chord, see the shape.",
-    alt: "Chord editor showing a D major chord diagram and chord flavours",
-  },
-  {
-    src: songs,
-    caption: "Your songs, sorted. Your life, sadly, not.",
-    alt: "List of songs in the project Desert Sessions grouped by date",
-  },
 ];
 ---
 
 <Layout
-  title="Rhymate — lyrics, chords and rhymes"
-  description="Rhymate is a songwriting app for lyrics, chords and finding the right rhyme, on iPhone, iPad and Mac."
+  title="Rhymate — write songs with chords and rhymes"
+  description="Rhymate is a songwriting app: lyrics with chords, a chord sheet PDF, and the right rhyme above your keyboard, on iPhone, iPad and Mac."
   tone="mint"
 >
   <!-- Hero -->
@@ -123,8 +126,8 @@ const gallery = [
           style="animation-delay: 360ms"
         >
           A songwriting app for lyrics, chords and the eternal search for
-          something that rhymes with “orange”. We can’t fix orange. Nobody can.
-          But most other words are covered.
+          something that rhymes with “orange”. It opens right where you left
+          off. We can’t fix orange, though. Nobody can.
         </p>
         <div
           class="rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-5"
@@ -163,8 +166,8 @@ const gallery = [
         style="animation-delay: 300ms"
       >
         <PhoneFrame
-          src={rhymes}
-          alt="Rhymate search results for love, grouped by syllables"
+          src={songsHome}
+          alt="Rhymate's Songs home with the song Open Road to continue"
           loading="eager"
           class="relative z-10 -mr-10 w-[46%] -rotate-[5deg] sm:-mr-14"
         />
@@ -281,6 +284,40 @@ const gallery = [
     </div>
   </section>
 
+  <!-- What's new -->
+  <section class="gutter bg-paper py-24 sm:py-32">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="text-sm font-medium tracking-[0.2em] text-teal uppercase">
+          New in {latest.version} · {latest.date}
+        </p>
+        <h2 class="display mt-6 max-w-3xl text-big text-balance">
+          {latest.summary}
+        </h2>
+      </div>
+      <a
+        href="/rhymate/changelog"
+        class="group inline-flex shrink-0 items-center gap-2 font-medium text-teal"
+      >
+        All releases
+        <span
+          aria-hidden="true"
+          class="transition-transform duration-500 ease-calm group-hover:translate-x-1"
+        >
+          →
+        </span>
+      </a>
+    </div>
+    <ul class="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      {latest.changes.slice(0, 3).map(({ title, body }) => (
+        <li class="border-t border-ink/15 pt-6">
+          <h3 class="display text-2xl sm:text-3xl">{title}</h3>
+          <p class="mt-3 max-w-sm leading-relaxed text-ink/70">{body}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   <!-- Closing -->
   <section id="support" class="gutter scroll-mt-20 bg-sand py-24 sm:py-32">
     <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
@@ -292,7 +329,7 @@ const gallery = [
         We’d love to hear from you.
       </p>
     </div>
-    <ul class="mt-14 grid gap-4 sm:grid-cols-2">
+    <ul class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {[
         {
           href: "mailto:info@digitowly.com?subject=Rhymate%20support",
@@ -303,6 +340,11 @@ const gallery = [
           href: "/rhymate/privacy",
           label: "Privacy",
           note: "Short read. Your lyrics stay yours.",
+        },
+        {
+          href: "/rhymate/changelog",
+          label: "Changelog",
+          note: "Every release, newest first.",
         },
       ].map(({ href, label, note }) => (
         <li>
