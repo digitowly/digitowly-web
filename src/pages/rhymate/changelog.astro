@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { releases } from "../../components/Rhymate/changelog";
+---
+
+<Layout
+  title="Rhymate changelog — digitowly"
+  description="What's new in Rhymate, release by release."
+  tone="mint"
+>
+  <section class="gutter relative overflow-hidden bg-mint pt-36 pb-16 text-pine sm:pt-44 sm:pb-24">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -top-[25vw] -right-[30vw] size-[70vw] rounded-full bg-[#91ffe2]/70 blur-3xl"
+    ></div>
+    <p class="rise relative text-sm font-medium tracking-[0.2em] text-teal uppercase">
+      <a href="/rhymate" class="hover:underline">Rhymate</a> · Changelog
+    </p>
+    <h1
+      class="display rise relative mt-6 text-huge text-balance"
+      style="animation-delay: 120ms"
+    >
+      What’s{" "}
+      <span class="serif-accent tracking-normal text-teal">new.</span>
+    </h1>
+    <p
+      class="rise relative mt-10 max-w-xl text-lg leading-relaxed text-pine/80"
+      style="animation-delay: 260ms"
+    >
+      Every release, newest first. Bug fixes are included for free and not
+      listed, because nobody reads those anyway.
+    </p>
+  </section>
+
+  <section class="gutter bg-paper py-20 sm:py-32">
+    <ol class="space-y-20 sm:space-y-28">
+      {releases.map(({ version, date, summary, changes }) => (
+        <li
+          id={`v${version}`}
+          class="grid scroll-mt-24 gap-8 border-t border-ink/15 pt-8 lg:grid-cols-[1fr_2fr] lg:gap-16"
+        >
+          <div>
+            <h2 class="display text-big">{version}</h2>
+            <p class="mt-2 text-sm font-medium tracking-[0.2em] text-teal uppercase">
+              {date}
+            </p>
+            <p class="serif-accent mt-4 text-2xl leading-snug text-ink/80">
+              {summary}
+            </p>
+          </div>
+          <ul class="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+            {changes.map(({ title, body }) => (
+              <li>
+                <h3 class="display text-2xl">{title}</h3>
+                <p class="mt-2 leading-relaxed text-ink/70">{body}</p>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Layout>
