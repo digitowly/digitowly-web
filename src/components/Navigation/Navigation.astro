@@ -8,11 +8,15 @@ interface Props {
 const { tone } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, "");
 
+/** `match` lists the paths (and their subpages) where a link shows as current. */
 const links = [
-  { href: "/skauz", label: "Skauz", match: ["/skauz"] },
-  { href: "/#projects", label: "Projects", match: ["/rhymate"] },
+  { href: "/rhymate", label: "Rhymate", match: ["/rhymate"] },
+  { href: "/#projects", label: "Projects", match: ["/skauz"] },
   { href: "/#contact", label: "Contact", match: [] as string[] },
 ];
+
+const isCurrent = (match: string[]) =>
+  match.some((m) => path === m || path.startsWith(`${m}/`));
 ---
 
 <header
@@ -29,7 +33,7 @@ const links = [
         <li>
           <a
             href={href}
-            aria-current={match.includes(path) ? "page" : undefined}
+            aria-current={isCurrent(match) ? "page" : undefined}
             class="relative py-2 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-500 after:ease-calm hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
           >
             {label}
