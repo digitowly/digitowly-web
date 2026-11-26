@@ -1,0 +1,48 @@
+---
+/**
+ * Renders a pixel sprite from rows of characters. Each character is looked
+ * up in `palette`; "." (or any unknown key) is transparent.
+ */
+interface Props {
+  rows: readonly string[];
+  palette: Record<string, string>;
+  class?: string;
+  /** Accessible name. Without one the sprite is treated as decoration. */
+  title?: string;
+}
+
+const { rows, palette, class: className, title } = Astro.props;
+const h = rows.length;
+const w = Math.max(...rows.map((r) => r.length));
+
+const rects: { x: number; y: number; w: number; fill: string }[] = [];
+rows.forEach((row, y) => {
+  let x = 0;
+  while (x < row.length) {
+    const ch = row[x];
+    const fill = palette[ch];
+    if (!fill) {
+      x++;
+      continue;
+    }
+    let end = x;
+    while (end < row.length && row[end] === ch) end++;
+    rects.push({ x, y, w: end - x, fill });
+    x = end;
+  }
+});
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={`0 0 ${w} ${h}`}
+  shape-rendering="crispEdges"
+  class={className}
+  role={title ? "img" : undefined}
+  aria-hidden={title ? undefined : "true"}
+>
+  {title && <title>{title}</title>}
+  {rects.map((r) => (
+    <rect x={r.x} y={r.y} width={r.w} height="1" fill={r.fill} />
+  ))}
+</svg>

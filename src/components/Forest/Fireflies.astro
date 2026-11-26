@@ -1,0 +1,38 @@
+---
+/** A few glowing square fireflies that drift and blink. Purely decorative. */
+interface Props {
+  count?: number;
+  seed?: number;
+  class?: string;
+}
+
+const { count = 14, seed = 1, class: className } = Astro.props;
+
+let s = seed * 9301 + 49297;
+const rnd = () => {
+  s = (s * 9301 + 49297) % 233280;
+  return s / 233280;
+};
+
+const flies = Array.from({ length: count }, () => ({
+  left: `${(rnd() * 100).toFixed(1)}%`,
+  top: `${(10 + rnd() * 80).toFixed(1)}%`,
+  size: rnd() < 0.3 ? 6 : 4,
+  dx: `${Math.round((rnd() - 0.5) * 60)}px`,
+  dy: `${Math.round(-10 - rnd() * 40)}px`,
+  delay: `${(-rnd() * 8).toFixed(2)}s`,
+  dur: `${(5 + rnd() * 6).toFixed(2)}s`,
+}));
+---
+
+<div
+  aria-hidden="true"
+  class:list={["pointer-events-none absolute inset-0", className]}
+>
+  {flies.map((f) => (
+    <span
+      class="firefly"
+      style={`left:${f.left};top:${f.top};width:${f.size}px;height:${f.size}px;--dx:${f.dx};--dy:${f.dy};animation-delay:${f.delay};animation-duration:${f.dur}`}
+    />
+  ))}
+</div>

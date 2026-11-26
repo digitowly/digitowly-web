@@ -27,6 +27,7 @@
     "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: "Silkscreen", ui-monospace, monospace;
 
   --text-giant: clamp(4.25rem, 19vw, 14rem);
   --text-giant--line-height: 0.86;
@@ -42,6 +43,18 @@
   html {
     @apply bg-paper font-sans text-ink antialiased;
     scroll-behavior: smooth;
+  }
+
+  /* film grain over everything, so flat colour fields feel like paper */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.13;
+    mix-blend-mode: overlay;
   }
 
   ::selection {
@@ -67,6 +80,12 @@
   letter-spacing: -0.02em;
 }
 
+@utility pixel {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
 @utility gutter {
   @apply px-5 sm:px-10 lg:px-16 2xl:px-24;
 }
@@ -86,11 +105,93 @@
   }
 }
 
+/* square fireflies with a hard pixel halo */
+.firefly {
+  position: absolute;
+  background: var(--color-amber);
+  box-shadow:
+    0 0 0 3px rgb(255 168 0 / 0.22),
+    0 0 14px 3px rgb(255 168 0 / 0.35);
+  opacity: 0;
+  animation: firefly 7s ease-in-out infinite;
+}
+
+@keyframes firefly {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  20%,
+  60% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(var(--dx), var(--dy));
+  }
+  80% {
+    opacity: 0.2;
+  }
+}
+
+/* the contact owl flaps in two frames and bobs with each wingbeat */
+.mail-owl {
+  animation: owl-bob 0.8s steps(1) infinite;
+}
+.flap-up {
+  animation: flap-up 0.8s steps(1) infinite;
+}
+.flap-down {
+  opacity: 0;
+  animation: flap-down 0.8s steps(1) infinite;
+}
+
+@keyframes owl-bob {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes flap-up {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes flap-down {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .rise {
+  .rise,
+  .mail-owl,
+  .flap-up,
+  .flap-down {
     animation: none;
+  }
+  .firefly {
+    animation: none;
+    opacity: 0.6;
   }
 }
