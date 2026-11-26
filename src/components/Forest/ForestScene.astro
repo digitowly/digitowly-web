@@ -1,0 +1,43 @@
+---
+/**
+ * Full-bleed pixel-art forest, painted client-side into a tiny canvas and
+ * scaled up with crisp pixels. Falls back to a misty gradient without JS.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div
+  aria-hidden="true"
+  class:list={[
+    "forest-scene overflow-hidden bg-linear-to-b from-[#bcd2bb] via-[#507e69] to-forest",
+    className,
+  ]}
+>
+  <canvas></canvas>
+</div>
+
+<style>
+  canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    image-rendering: pixelated;
+    opacity: 0;
+    transition: opacity 1.4s var(--ease-calm);
+  }
+  canvas[data-ready] {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  import { mountForest } from "./forest-scene";
+
+  document
+    .querySelectorAll<HTMLCanvasElement>(".forest-scene canvas")
+    .forEach(mountForest);
+</script>

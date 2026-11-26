@@ -1,0 +1,42 @@
+---
+/**
+ * A small pixel landscape that stitches one section into the next.
+ * `bg` is the colour of the section it sits in, `fg` the silhouette colour
+ * of the neighbouring section it grows out of (or hangs down from).
+ */
+import { makeEdge, type Variant } from "./edges";
+
+interface Props {
+  variant: Variant;
+  bg: string;
+  fg: string;
+  /** Secondary colour some variants use, e.g. flower stems. */
+  accent?: string;
+  class?: string;
+}
+
+const { variant, bg, fg, accent = fg, class: className } = Astro.props;
+const edge = makeEdge(variant, fg, accent);
+const align = edge.anchor === "top" ? "xMidYMin" : "xMidYMax";
+---
+
+<div aria-hidden="true" style={`background-color:${bg}`}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox={`0 0 ${edge.width} ${edge.height}`}
+    preserveAspectRatio={`${align} slice`}
+    shape-rendering="crispEdges"
+    class:list={["block w-full", className]}
+  >
+    {edge.layers.map((layer) => (
+      <g
+        fill={layer.fill}
+        opacity={layer.opacity === 1 ? undefined : layer.opacity}
+      >
+        {layer.runs.map((r) => (
+          <rect x={r.x} y={r.y} width={r.w} height="1" />
+        ))}
+      </g>
+    ))}
+  </svg>
+</div>
