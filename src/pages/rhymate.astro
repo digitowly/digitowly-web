@@ -192,13 +192,10 @@ const gallery = [
         All of them actually useful.
       </span>
     </h2>
-    <ol class="mt-20 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-      {features.map(({ title, body, href, link }, i) => (
+    <ul class="mt-20 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map(({ title, body, href, link }) => (
         <li class="border-t border-ink/15 pt-6">
-          <span class="serif-accent text-2xl text-teal">
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <h3 class="display mt-3 text-3xl sm:text-4xl">{title}</h3>
+          <h3 class="display text-3xl sm:text-4xl">{title}</h3>
           <p class="mt-4 max-w-sm leading-relaxed text-ink/70">{body}</p>
           {href && (
             <a
@@ -216,7 +213,7 @@ const gallery = [
           )}
         </li>
       ))}
-    </ol>
+    </ul>
   </section>
 
   <!-- Gallery -->
